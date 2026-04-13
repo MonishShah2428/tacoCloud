@@ -17,6 +17,9 @@ import com.taco.cloud.Ingredient;
 import com.taco.cloud.Ingredient.Type;
 import com.taco.cloud.taco;
 
+import jakarta.validation.Valid;
+import org.springframework.validation.Errors;
+
 @Slf4j
 @Controller
 @RequestMapping("/design")
@@ -63,7 +66,10 @@ public class designTacoController {
         .collect(Collectors.toList());
     }
     @PostMapping
-    public String processTaco(taco Taco, @ModelAttribute tacoOrder TacoOrder){
+    public String processTaco(@Valid taco Taco, Errors errors, @ModelAttribute tacoOrder TacoOrder){
+        if(errors.hasErrors()){
+            return "design";
+        }
         TacoOrder.addTaco(Taco);
         log.info("Processing taco: " + Taco);
         return "redirect:/orders/current";
