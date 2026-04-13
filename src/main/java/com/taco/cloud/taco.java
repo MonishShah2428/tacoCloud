@@ -1,4 +1,15 @@
 package com.taco.cloud;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-public record taco(String name, List<Ingredient> ingredients) {}
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class taco {
+    private String name;
+    private List<Ingredient> ingredients;
+}
