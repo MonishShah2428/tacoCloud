@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.taco.cloud.models.tacoOrder;
 
-public interface orderRepositoryInterface extends CrudRepository<tacoOrder, UUID> {
+public interface orderRepositoryInterface extends CrudRepository<tacoOrder, String> {
 }

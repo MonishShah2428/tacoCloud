@@ -14,9 +14,8 @@ import jakarta.validation.constraints.NotBlank;
 
 import jakarta.validation.constraints.Digits;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.cassandra.core.mapping.Column;
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.datastax.oss.driver.api.core.uuid.Uuids;
 
@@ -26,11 +25,10 @@ import jakarta.validation.constraints.Pattern;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("taco_orders")
+@Document
 public class tacoOrder implements Serializable {
-	@PrimaryKey
-	private UUID id = Uuids.timeBased();
-
+	@Id
+	private String id;
 	@NotBlank(message="required")
 	private String deliveryName;
 	@NotBlank(message="required")
@@ -47,11 +45,10 @@ public class tacoOrder implements Serializable {
 	private String ccExpiration;
 	@Digits(integer=3, fraction=0, message="Invalid CVV")
 	private String ccCVV;
-	@Column("tacos")
-	private List<tacoUDT> tacos = new ArrayList<>();
+	private List<taco> tacos = new ArrayList<>();
 	private static final long serialVersionUID = 1L;
 	private Date placedAt;
-	public void addTaco(tacoUDT taco) {
+	public void addTaco(taco taco) {
 		this.tacos.add(taco);
 	}
 }
