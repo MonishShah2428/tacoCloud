@@ -1,10 +1,10 @@
 package com.taco.cloud.repository;
 
-import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+
 import com.taco.cloud.models.Ingredient;
 
-public interface ingredientRepositoryInterface {
-    Iterable<Ingredient> findAll();
-    Optional<Ingredient> findById(String id);
-    Ingredient save(Ingredient ingredient);
+public interface ingredientRepositoryInterface extends CrudRepository<Ingredient, String> {
+
 }
