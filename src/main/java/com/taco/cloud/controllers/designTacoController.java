@@ -1,6 +1,6 @@
 package com.taco.cloud.controllers;
 
-import com.taco.cloud.repository.ingredientRepositoryInterface;
+import com.taco.cloud.repository.ingredientRepositoryInterface2;
 import java.util.List;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -30,8 +30,8 @@ import org.springframework.validation.Errors;
 @SessionAttributes("tacoOrder")
 public class designTacoController {
 
-    private final ingredientRepositoryInterface ingredientRepo;
-    public designTacoController(ingredientRepositoryInterface ingredientRepo) {
+    private final ingredientRepositoryInterface2 ingredientRepo;
+    public designTacoController(ingredientRepositoryInterface2 ingredientRepo) {
         this.ingredientRepo = ingredientRepo;
     }
 

@@ -12,12 +12,16 @@ import java.util.Date;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Digits;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 import jakarta.validation.constraints.Pattern;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table("taco_order")
 public class tacoOrder implements Serializable {
 	@NotBlank(message="required")
 	private String deliveryName;
@@ -37,6 +41,7 @@ public class tacoOrder implements Serializable {
 	private String ccCVV;
 	private List<taco> tacos = new ArrayList<>();
 	private static final long serialVersionUID = 1L;
+	@Id
 	private Long id;
 	private Date placedAt;
 	public void addTaco(taco taco) {
