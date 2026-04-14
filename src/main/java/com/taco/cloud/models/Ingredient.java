@@ -1,16 +1,18 @@
 package com.taco.cloud.models;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE,force = true)
 @AllArgsConstructor
-@Table("ingredient")
+@Entity
 public class Ingredient {
     @Id
     private String id;

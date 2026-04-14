@@ -10,9 +10,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Digits;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import jakarta.validation.constraints.Pattern;
@@ -22,6 +27,7 @@ import jakarta.validation.constraints.Pattern;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("taco_order")
+@Entity
 public class tacoOrder implements Serializable {
 	@NotBlank(message="required")
 	private String deliveryName;
@@ -39,9 +45,11 @@ public class tacoOrder implements Serializable {
 	private String ccExpiration;
 	@Digits(integer=3, fraction=0, message="Invalid CVV")
 	private String ccCVV;
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<taco> tacos = new ArrayList<>();
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Date placedAt;
 	public void addTaco(taco taco) {
