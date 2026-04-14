@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.taco.cloud.models.Ingredient;
 
 @Repository
-public class jdbcIngredientRepository implements ingredientRepository {
+public class jdbcIngredientRepository implements ingredientRepositoryInterface {
     
     private JdbcTemplate jdbc;
     public jdbcIngredientRepository(JdbcTemplate jdbc) {

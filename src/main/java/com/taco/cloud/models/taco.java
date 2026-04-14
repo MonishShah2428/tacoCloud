@@ -18,7 +18,7 @@ public class taco {
     private String name;
     @NotNull(message="You must choose at least 1 ingredient")
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<Ingredient> ingredients;
+    private List<ingredientRef> ingredients;
     private Long id;
     private Date createdAt = new Date();
 }
