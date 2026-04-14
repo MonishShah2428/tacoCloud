@@ -13,12 +13,17 @@ import jakarta.validation.Valid;
 import org.springframework.validation.Errors;
 
 import com.taco.cloud.models.tacoOrder;
+import com.taco.cloud.repository.orderRepositoryInterface2;
 
 @Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class orderController {
+    orderRepositoryInterface2 orderRepo;
+    public orderController(orderRepositoryInterface2 orderRepo) {
+        this.orderRepo = orderRepo;
+    }
     @GetMapping("/current")
     public String orderForm() {
         return "orderForm";
@@ -29,6 +34,7 @@ public class orderController {
             return "orderForm";
         }
         log.info("Processing order: " + TacoOrder);
+        orderRepo.save(TacoOrder);
         sessionStatus.setComplete();
         return "redirect:/";
     }
