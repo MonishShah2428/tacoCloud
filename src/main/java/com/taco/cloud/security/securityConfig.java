@@ -35,6 +35,7 @@ public class securityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/login")
+                .defaultSuccessUrl("/design")
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/")
