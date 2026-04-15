@@ -1,4 +1,4 @@
-package com.taco.cloud.models;
+package com.taco.cloud.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

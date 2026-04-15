@@ -1,4 +1,4 @@
-package com.taco.cloud.models;
+package com.taco.cloud.security;
 
 import java.util.Arrays;
 import java.util.Collection;
