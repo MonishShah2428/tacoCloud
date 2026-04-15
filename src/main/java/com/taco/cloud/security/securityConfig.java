@@ -33,6 +33,12 @@ public class securityConfig {
                 .requestMatchers("/design", "/orders").hasRole("USER")
                 .anyRequest().permitAll()
             )
+            .formLogin(form -> form
+                .loginPage("/login")
+            )
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+            )
             .build();
     }
 }
