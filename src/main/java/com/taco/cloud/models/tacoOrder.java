@@ -29,6 +29,7 @@ public class tacoOrder implements Serializable {
 	private String id;
 	@NotBlank(message="required")
 	private String deliveryName;
+	private String userId;
 	@NotBlank(message="required")
 	private String deliveryStreet;
 	@NotBlank(message="required")
