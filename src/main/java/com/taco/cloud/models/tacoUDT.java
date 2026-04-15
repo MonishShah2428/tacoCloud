@@ -1,4 +1,4 @@
-package com.taco.cloud.models;
+/*package com.taco.cloud.models;
 import java.util.List;
 import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 import lombok.Data;
@@ -7,4 +7,4 @@ import lombok.Data;
 public class tacoUDT {
  private final String name;
  private final List<ingredientUDT> ingredients;
-}
+}*/

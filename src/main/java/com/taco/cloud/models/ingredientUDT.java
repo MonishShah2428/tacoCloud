@@ -1,4 +1,5 @@
-package com.taco.cloud.models;
+
+/*package com.taco.cloud.models;
 
 import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 
@@ -16,4 +17,4 @@ public class ingredientUDT {
 
     private final Ingredient.Type type;
     
-}
+}*/

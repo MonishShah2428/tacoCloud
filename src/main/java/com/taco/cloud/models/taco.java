@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
-
+import com.taco.cloud.models.Ingredient;
 
 @Data
 public class taco {
@@ -20,7 +20,7 @@ public class taco {
     private String name;
     @NotNull(message="You must choose at least 1 ingredient")
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<ingredientUDT> ingredients;
+    private List<Ingredient> ingredients;
     private Date createdAt = new Date();
 
     public void addIngredient(Ingredient ingredient) {

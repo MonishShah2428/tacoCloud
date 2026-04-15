@@ -20,7 +20,6 @@ import com.taco.cloud.models.Ingredient;
 import com.taco.cloud.models.Ingredient.Type;
 import com.taco.cloud.models.taco;
 import com.taco.cloud.models.tacoOrder;
-import com.taco.cloud.models.tacoUDT;
 
 import jakarta.validation.Valid;
 import org.springframework.validation.Errors;
@@ -68,7 +67,7 @@ public class designTacoController {
         .collect(Collectors.toList());
     }
     @PostMapping
-    public String processTaco(@Valid tacoUDT Taco, Errors errors, @ModelAttribute tacoOrder TacoOrder){
+    public String processTaco(@Valid taco Taco, Errors errors, @ModelAttribute tacoOrder TacoOrder){
         if(errors.hasErrors()){
             return "design";
         }
