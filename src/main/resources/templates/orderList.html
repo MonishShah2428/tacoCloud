@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Orders</title>
+</head>
+<body>
+    <h1>Your Orders</h1>
+    <div th:if="${#lists.isEmpty(orders)}">
+        <p>You have no past orders.</p>
+    </div>
+    <div th:each="order : ${orders}">
+        <hr/>
+        <p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
+        <p><strong>Placed At:</strong> <span th:text="${order.placedAt}"></span></p>
+        <p><strong>Deliver to:</strong>
+            <span th:text="${order.deliveryName}"></span>,
+            <span th:text="${order.deliveryStreet}"></span>,
+            <span th:text="${order.deliveryCity}"></span>,
+            <span th:text="${order.deliveryState}"></span>
+            <span th:text="${order.deliveryZip}"></span>
+        </p>
+        <p><strong>Tacos:</strong></p>
+        <ul>
+            <li th:each="taco : ${order.tacos}" th:text="${taco.name}"></li>
+        </ul>
+    </div>
+    <a th:href="@{/design}">Order another taco</a>
+</body>
+</html>

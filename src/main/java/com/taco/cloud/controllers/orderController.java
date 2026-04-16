@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 
 import lombok.extern.slf4j.Slf4j;
 import jakarta.validation.Valid;
@@ -26,6 +27,12 @@ public class orderController {
     public orderController(orderRepositoryInterface2 orderRepo) {
         this.orderRepo = orderRepo;
     }
+    @GetMapping
+    public String ordersForUser(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("orders", orderRepo.findByUserIdOrderByPlacedAtDesc(user.getId()));
+        return "orderList";
+    }
+
     @GetMapping("/current")
     public String orderForm() {
         return "orderForm";
