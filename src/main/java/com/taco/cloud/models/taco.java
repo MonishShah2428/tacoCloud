@@ -7,6 +7,7 @@ import jakarta.annotation.Generated;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,8 @@ import com.taco.cloud.models.Ingredient;
 
 @Data
 public class taco {
+    @Id
+    private String id;
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
     private String name;
