@@ -1,8 +1,8 @@
 package com.taco.cloud.messaging;
 
-import jakarta.jms.JMSException;
-import jakarta.jms.Message;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
 
 public interface MessagePostProcessor {
-    public Message postProcessMessage(Message message) throws JMSException;
+    public Message postProcessMessage(Message message) throws AmqpException;
 }

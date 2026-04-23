@@ -1,22 +1,21 @@
 package com.taco.cloud.messaging.kitchen.listener;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.jms.annotation.JmsListener;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import com.taco.cloud.models.tacoOrder;
 
+
 @Component
-@Profile("jms-listener")
 public class OrderListener {
-    private KitchenUI ui;
-    
-    public OrderListener(KitchenUI ui) {
-        this.ui = ui;
+    private KitchenUI kitchenUI;
+
+    public OrderListener(KitchenUI kitchenUI) {
+        this.kitchenUI = kitchenUI;
     }
 
-    @JmsListener(destination = "tacocloud.order.queue")
+    @RabbitListener(queues = "tacocloud.order")
     public void receiveOrder(tacoOrder order) {
-        ui.displayOrder(order);
+        kitchenUI.displayOrder(order);
     }
 }
