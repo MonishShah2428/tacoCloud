@@ -1,16 +1,17 @@
-package com.taco.cloud.messaging.kitchen.listener;
+package com.taco.cloud.messaging.kitchen;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import com.taco.cloud.messaging.kitchen.listener.KitchenUI;
 import com.taco.cloud.models.tacoOrder;
 
 
 @Component
-public class OrderListener {
+public class KafkaOrderListener {
     private KitchenUI kitchenUI;
 
-    public OrderListener(KitchenUI kitchenUI) {
+    public KafkaOrderListener(KitchenUI kitchenUI) {
         this.kitchenUI = kitchenUI;
     }
 

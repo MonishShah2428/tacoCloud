@@ -2,9 +2,9 @@ package com.taco.cloud.messaging;
 
 import java.util.Map;
 
-import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.support.converter.JacksonJsonMessageConverter;
 
 import com.taco.cloud.models.tacoOrder;
 

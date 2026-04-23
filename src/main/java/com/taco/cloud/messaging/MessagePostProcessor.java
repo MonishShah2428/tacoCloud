@@ -1,8 +1,9 @@
 package com.taco.cloud.messaging;
 
-import org.springframework.amqp.AmqpException;
-import org.springframework.amqp.core.Message;
+import org.apache.kafka.common.KafkaException;
+import org.apache.kafka.shaded.com.google.protobuf.Message;
+
 
 public interface MessagePostProcessor {
-    public Message postProcessMessage(Message message) throws AmqpException;
+    public Message postProcessMessage(Message message) throws KafkaException;
 }
