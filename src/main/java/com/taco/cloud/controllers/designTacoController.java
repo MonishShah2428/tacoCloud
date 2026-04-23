@@ -1,6 +1,7 @@
 package com.taco.cloud.controllers;
 
 import com.taco.cloud.repository.ingredientRepositoryInterface2;
+import com.taco.cloud.repository.tacosRepository;
 import java.util.List;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -31,8 +32,11 @@ import org.springframework.validation.Errors;
 public class designTacoController {
 
     private final ingredientRepositoryInterface2 ingredientRepo;
-    public designTacoController(ingredientRepositoryInterface2 ingredientRepo) {
+    private final tacosRepository tacoRepo;
+
+    public designTacoController(ingredientRepositoryInterface2 ingredientRepo, tacosRepository tacoRepo) {
         this.ingredientRepo = ingredientRepo;
+        this.tacoRepo = tacoRepo;
     }
 
     @ModelAttribute
@@ -71,8 +75,9 @@ public class designTacoController {
         if(errors.hasErrors()){
             return "design";
         }
-        TacoOrder.addTaco(Taco);
-        log.info("Processing taco: " + Taco);
+        taco savedTaco = tacoRepo.save(Taco);
+        TacoOrder.addTaco(savedTaco);
+        log.info("Processing taco: " + savedTaco);
         return "redirect:/orders/current";
     }
 }

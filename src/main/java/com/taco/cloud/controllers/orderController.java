@@ -42,9 +42,9 @@ public class orderController {
         if(errors.hasErrors()){
             return "orderForm";
         }
+        TacoOrder.setUserId(user.getId());
         log.info("Processing order: " + TacoOrder);
         orderRepo.save(TacoOrder);
-        TacoOrder.setUserId(user.getId());
         sessionStatus.setComplete();
         return "redirect:/";
     }
